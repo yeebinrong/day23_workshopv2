@@ -1,0 +1,49 @@
+<form fxFill class="p-1" fxLayout="column" fxLayoutAlign="start center">
+    <mat-card class="p-3" fxLayout="column" fxLayoutAlign="center center">
+        <mat-form-field>
+            <mat-label>Customer Name</mat-label>
+            <mat-select required>
+                <mat-option *ngFor="let i of customerList" value="i.id">
+                    {{i.name}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Employee Name</mat-label>
+            <mat-select required>
+                <mat-option *ngFor="let i of employeeList" value="i.id">
+                    {{i.name}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Shipper Name</mat-label>
+            <mat-select required>
+                <mat-option *ngFor="let i of shipperList" value="i.id">
+                    {{i.name}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <button type="button" mat-raised-button color="accent" (click)="this.addProduct()">Add product</button>
+    </mat-card>
+    <div fxLayout="column">
+        <mat-card *ngFor="let i of productArray.controls;let num = index" class="mt-1 mb-1">
+            <mat-form-field class="ml-1 mr-1">
+                <mat-label>Product Name</mat-label>
+                <mat-select required>
+                    <mat-option *ngFor="let i of productList" value="i.id">
+                        {{i.name}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Product Qty</mat-label>
+                <input type="number" matInput>
+            </mat-form-field>
+            <button class="ml-1 mr-1" (click)="this.removeProduct(num)">X</button>
+        </mat-card>
+    </div>
+    <div>
+        <button type="submit" class="mt-1" mat-raised-button color="primary">Submit order</button>
+    </div>
+</form>
